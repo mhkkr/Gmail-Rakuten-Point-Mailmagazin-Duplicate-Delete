@@ -11,9 +11,11 @@ javascript: (() => {
   Array.from($trs, $tr => {
     const $checkbox = $tr.querySelector('.oZ-jc.T-Jo.J-J5-Ji');
     const $from = $tr.querySelector('.zF');
+    const $subject = $tr.querySelector('.bqe')
     const email = $from.getAttribute('email');
     const name = $from.getAttribute('name');
-    if (email.match('emagazine.rakuten.co.jp')) {
+    const subject = $subject.textContent
+    if (/emagazine.rakuten.co.jp/.test(email) && !/限定※【クリックで2ポイント】/.test(subject)) {
       const new_hantei = `${email}-${name}`;
       const data = findData(new_hantei);
       if (data) {
